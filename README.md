@@ -1,6 +1,6 @@
 # ASSR - Automatic Speech Sentiment Recognition
 ###### speech to text and setmient analysis Webapp
-###### CSAI308 - Introduction to Natural Language Processing / college group project.
+###### CSAI308 - Introduction to Natural Language Processing / college project.
 ###### March 2024
 
 ## Getting Started
@@ -12,7 +12,7 @@ To get started with ASSR, follow these steps:
     git clone https://github.com/M1419/ASSR.git
     ```
 
-2. Create a `.env` file in the root directory of the project and add your OpenAI API key inside it:
+2. Create a `.env` file in the root of the project and add your OpenAI API key inside it:
     ```
     OPENAI_API_KEY=your_api_key_here
     ```
