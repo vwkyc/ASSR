@@ -1,4 +1,7 @@
 # ASSR - Automatic Speech Sentiment Recognition
+###### speech to text and setmient analysis Webapp
+###### CSAI308 - Introduction to Natural Language Processing / college group project.
+###### March 2024
 
 ## Getting Started
 
