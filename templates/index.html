@@ -7,12 +7,27 @@
 <body>
     <h1>Upload your audio file</h1>
     <form method="POST" action="/" enctype="multipart/form-data">
-        <input type="file" name="file">
+        <input type="file" id="file" name="file">
         <input type="submit" value="Transcribe">
     </form>
-    {% if transcript %}
-    <h2>Transcription:</h2>
-    <p>{{ transcript }}</p>
-    {% endif %}
+    <audio id="audio" controls {% if audio_file %}src="{{ url_for('static', filename=audio_file) }}"{% else %}style="display: none;"{% endif %}></audio>
+    <script>
+        var fileInput = document.getElementById('file');
+        var audio = document.getElementById('audio');
+
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                audio.style.display = 'block';  // Show the audio controls
+                audio.src = URL.createObjectURL(this.files[0]);
+                audio.load();
+            } else {
+                audio.style.display = 'none';  // Hide the audio controls
+            }
+        });
+    </script>
+        {% if transcript %}
+        <h2>Transcription:</h2>
+        <p>{{ transcript }}</p>
+        {% endif %}
 </body>
 </html>

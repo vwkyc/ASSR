@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+#sample file
+static/ASRsample.wav
+ASRsample.wav
+
 # Distribution / packaging
 .Python
 build/
