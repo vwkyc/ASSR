@@ -12,9 +12,10 @@ To get started with ASSR, follow these steps:
     git clone https://github.com/M1419/ASSR.git
     ```
 
-2. Create a `.env` file in the root of the project and add your OpenAI API key inside it:
+2. Create a `.env` file in the root of the project then add your OpenAI API key and google application credentials inside it:
     ```
     OPENAI_API_KEY=your_api_key_here
+    GOOGLE_APPLICATION_CREDENTIALS="application_default_credentials.json"
     ```
 
 3. Create and activate a virtual environment:
