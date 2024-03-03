@@ -30,8 +30,6 @@ To get started with ASSR, follow these steps:
     python app.py
     ```
 
-6. Follow the instructions provided by the application to perform sentiment analysis on speech.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
