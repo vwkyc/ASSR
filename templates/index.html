@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Speech Sentiment Recognition</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
-<head>
-    <title>Audio Transcription</title>
 </head>
 <body>
-    <h1>Upload your audio file</h1>
-    <form method="POST" action="/" enctype="multipart/form-data">
-        <input type="file" id="file" name="file">
-        <input type="submit" value="Transcribe">
-    </form>
-    <audio id="audio" controls {% if audio_file %}src="{{ url_for('static', filename=audio_file) }}"{% else %}style="display: none;"{% endif %}></audio>
+    <header>
+        <h1>Upload your audio file</h1>
+    </header>
+    <main>
+        <form method="POST" action="/" enctype="multipart/form-data">
+            <input type="file" id="file" name="file">
+            <input type="submit" value="Transcribe">
+        </form>
+        <audio id="audio" controls {% if audio_file %}src="{{ url_for('static', filename=audio_file) }}"{% else %}style="display: none;"{% endif %}></audio>
+        {% if transcript %}
+            <section>
+                <h2>Transcription:</h2>
+                <p>{{ transcript }}</p>
+            </section>
+        {% endif %}
+        {% if sentiment_data %}
+            <section>
+                <h2>Sentiment Analysis:</h2>
+                <p>Document sentiment score: {{ sentiment_data.document_sentiment.score }}</p>
+                <p>Document sentiment magnitude: {{ sentiment_data.document_sentiment.magnitude }}</p>
+                {% for sentence in sentiment_data.sentences %}
+                    <p>Sentence text: {{ sentence.text.content }}</p>
+                    <p>Sentence sentiment score: {{ sentence.sentiment.score }}</p>
+                    <p>Sentence sentiment magnitude: {{ sentence.sentiment.magnitude }}</p>
+                {% endfor %}
+                <p>Language of the text: {{ sentiment_data.language_code }}</p>
+            </section>
+        {% endif %}
+    </main>
     <script>
         var fileInput = document.getElementById('file');
         var audio = document.getElementById('audio');
@@ -26,9 +51,5 @@
             }
         });
     </script>
-        {% if transcript %}
-        <h2>Transcription:</h2>
-        <p>{{ transcript }}</p>
-        {% endif %}
 </body>
 </html>

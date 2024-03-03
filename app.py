@@ -5,6 +5,7 @@ from openai import OpenAI
 import os
 import dotenv
 from werkzeug.utils import secure_filename
+from google.cloud import language_v2
 
 app = Flask(__name__)
 
@@ -15,10 +16,37 @@ api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     raise ValueError("No OpenAI API key found in environment variables")
 
+def sample_analyze_sentiment(text_content):
+    client = language_v2.LanguageServiceClient()
+    document_type_in_plain_text = language_v2.Document.Type.PLAIN_TEXT
+    document = {
+        "content": text_content,
+        "type_": document_type_in_plain_text,
+    }
+    encoding_type = language_v2.EncodingType.UTF8
+    response = client.analyze_sentiment(
+        request={"document": document, "encoding_type": encoding_type}
+    )
+    return response
+
+def sample_analyze_sentiment(text_content):
+    client = language_v2.LanguageServiceClient()
+    document_type_in_plain_text = language_v2.Document.Type.PLAIN_TEXT
+    document = {
+        "content": text_content,
+        "type_": document_type_in_plain_text,
+    }
+    encoding_type = language_v2.EncodingType.UTF8
+    response = client.analyze_sentiment(
+        request={"document": document, "encoding_type": encoding_type}
+    )
+    return response
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     transcript = None
-    filename = None  # Initialize filename to None
+    filename = None
+    sentiment_data = None
     if request.method == 'POST':
         if 'file' not in request.files:
             return 'No file part in the request', 400
@@ -36,9 +64,10 @@ def home():
                     file=open(filepath, "rb"),
                     response_format="text"
                 )
+                sentiment_data = sample_analyze_sentiment(transcript)
             except Exception as e:
-                print(str(e))  # Log the error but don't return it
-    return render_template('index.html', transcript=transcript, audio_file=filename)
+                print(str(e))
+    return render_template('index.html', transcript=transcript, audio_file=filename, sentiment_data=sentiment_data)
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
