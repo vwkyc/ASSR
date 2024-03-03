@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Transcription</title>
+</head>
+<body>
+    <h1>Upload your audio file</h1>
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Transcribe">
+    </form>
+    {% if transcript %}
+    <h2>Transcription:</h2>
+    <p>{{ transcript }}</p>
+    {% endif %}
+</body>
+</html>
