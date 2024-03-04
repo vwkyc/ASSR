@@ -3,24 +3,19 @@
 ###### CSAI308 - Introduction to Natural Language Processing / college project / March 2024.
 
 **Overview**
-
-This web application leverages advanced technologies to provide real-time speech-to-text conversion and comprehensive sentiment analysis. Core functions include:
+This web application leverages advanced technologies to provide speech-to-text conversion and comprehensive sentiment analysis. Core functions include:
 
 **Technical Foundation**
-
 * **Open AI Whisper:**  Employed for robust multilingual speech-to-text capabilities.
 * **Google Cloud Natural Language API:** Provides sophisticated sentiment analysis with multilingual compatibility.
 
 **Value Proposition**
-
 ASSR has potential applications in various fields:
-
 * **Customer Service:** Analyze call transcripts to gauge customer satisfaction and identify areas for improvement.
 * **Market Research:**  Assess sentiment towards products or brands through recorded interviews and focus groups.
-* **Accessibility:** Assist individuals with hearing impairments by providing real-time transcriptions enhanced with emotional context.
+* **Accessibility:** Assist individuals with hearing impairments by providing transcriptions enhanced with emotional context.
 
 **Project Status**
-
 This project, developed for a Natural Language Processing course, demonstrates the power of combining AI technologies for nuanced language understanding. Future goals include web deployment for wider accessibility.
 
 **Note:** This application can be deployed on the internet, allowing users to access it from anywhere.
