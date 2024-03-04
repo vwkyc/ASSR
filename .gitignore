@@ -9,6 +9,7 @@ __pycache__/
 #sample file
 static/ASRsample.wav
 ASRsample.wav
+ASSR.code-workspace
 
 # Distribution / packaging
 .Python
