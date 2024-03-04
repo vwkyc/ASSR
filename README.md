@@ -27,12 +27,14 @@ Follow these steps to get started with ASSR:
 
     Unix-like:
     ```sh
+    mkdir env && cd env
     echo "OPENAI_API_KEY=your_api_key_here" > .env
     echo "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" >> .env
     ```
 
     PowerShell:
     ```powershell
+    mkdir env; cd env
     "OPENAI_API_KEY=your_api_key_here" | Out-File -FilePath .env -Encoding ascii
     "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" | Add-Content .env
     ```
