@@ -85,4 +85,4 @@ Follow these steps to get started with ASSR:
     python app.py
     ```
 
-7. Open the application in your browser at `http://localhost:8080`.
+7. Open the application in your browser at [http://localhost:8080](http://localhost:8080).
