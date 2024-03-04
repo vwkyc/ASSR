@@ -13,8 +13,8 @@ document.querySelector('#form02-upload-audio-instead').addEventListener('change'
     // Set the 'data-placeholder' attribute of the element with the class 'file' to the file name
     document.querySelector('.file').setAttribute('data-placeholder', fileName);
 });
-
 /* Carrd Site JS | carrd.co | License: MIT */
+
 (function() {
 
 	// Main.

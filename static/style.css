@@ -512,10 +512,10 @@ form .actions button:disabled {
 }
 
 #form02 .field button {
-	background-size: 0.7rem;
-	height: 1.4rem;
-	line-height: 1.4rem;
-	width: 1.4rem;
+	background-size: 1rem;
+	height: 2rem;
+	line-height: 2rem;
+	width: 2rem;
 	border-radius: 0rem;
 	border: solid 1px #999999;
 	transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
@@ -543,7 +543,7 @@ form .actions button:disabled {
 }
 
 #form02 input[type="text"], #form02 input[type="email"], #form02 input[type="tel"], #form02 input[type="number"], #form02 textarea, #form02 select, #form02 .file, #form02 .date {
-	padding-left: calc(0.05rem + 0.6125rem);
+	padding-left: calc(0.05rem + 0.875rem);
 	color: #999999;
 	border: solid 1px #999999;
 }
@@ -553,32 +553,32 @@ form .actions button:disabled {
 }
 
 #form02 input[type="text"], #form02 input[type="email"], #form02 input[type="tel"], #form02 input[type="number"], #form02 select, #form02 .file, #form02 .date {
-	height: 1.75rem;
-	padding: 0 0.6125rem;
-	line-height: calc(1.75rem - 2px);
+	height: 2.5rem;
+	padding: 0 0.875rem;
+	line-height: calc(2.5rem - 2px);
 }
 
 #form02 textarea {
-	padding: 0.6125rem;
+	padding: 0.875rem;
 	height: 8rem;
 	line-height: 1.5;
-	padding-top: 0.35rem;
+	padding-top: 0.6125rem;
 }
 
 #form02 select {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='504' height='552' preserveAspectRatio='none' viewBox='0 0 504 552'%3E%3Cpath d='M483.9,210.9L252,442.9L20.1,210.9l67.9-67.9L252,307.1l164.1-164.1L483.9,210.9z' fill='%23999999' /%3E%3C/svg%3E");
-	background-position: calc(100% - 0.6125rem) center;
-	padding-right: 2.0625rem;
+	background-position: calc(100% - 0.875rem) center;
+	padding-right: 2.625rem;
 }
 
 #form02 input[type="checkbox"] + label:before {
 	border-radius: 0rem;
 	color: #999999;
 	border: solid 1px #999999;
-	background-size: 0.74375rem;
-	height: 1.3125rem;
-	width: 1.3125rem;
-	margin-right: 0.875rem;
+	background-size: 1.0625rem;
+	height: 1.875rem;
+	width: 1.875rem;
+	margin-right: 0.9375rem;
 }
 
 #form02 input[type="checkbox"]:checked + label:before {
@@ -586,22 +586,22 @@ form .actions button:disabled {
 }
 
 #form02 .number > input[type="number"] {
-	padding-left: 1.9rem;
-	padding-right: 1.9rem;
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
 }
 
 #form02 .number > button.decrement {
-	bottom: calc(0.175rem - 0px);
-	left: calc(0.175rem - 0px);
+	bottom: calc(0.25rem - 0px);
+	left: calc(0.25rem - 0px);
 }
 
 #form02 .number > button.increment {
-	bottom: calc(0.175rem - 0px);
-	right: calc(0.175rem - 0px);
+	bottom: calc(0.25rem - 0px);
+	right: calc(0.25rem - 0px);
 }
 
 #form02 .file:before {
-	width: calc(100% - 2.3625rem);
+	width: calc(100% - 3.375rem);
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M27.4,4.5c-0.4-0.4-0.8-0.7-1.5-0.9c-0.6-0.3-1.2-0.4-1.7-0.4H7.1c-0.5,0-0.9,0.2-1.3,0.5S5.3,4.5,5.3,5.1v30.7 c0,0.5,0.2,0.9,0.5,1.3c0.4,0.4,0.8,0.5,1.3,0.5h25.8c0.5,0,0.9-0.2,1.3-0.5c0.4-0.4,0.5-0.8,0.5-1.3V13.7c0-0.5-0.1-1.1-0.4-1.7 c-0.3-0.6-0.6-1.1-0.9-1.5L27.4,4.5z M25.7,6.2l6,6c0.2,0.2,0.3,0.4,0.4,0.8h-7.2V5.8C25.3,5.9,25.5,6.1,25.7,6.2z M7.7,35.2V5.7 h14.7v8c0,0.5,0.2,0.9,0.5,1.3c0.4,0.4,0.8,0.5,1.3,0.5h8v19.7H7.7z' style='opacity: 0.375' fill='%23999999' /%3E%3C/svg%3E");
 	background-size: 0.875rem;
 	background-position: left;
@@ -609,28 +609,28 @@ form .actions button:disabled {
 }
 
 #form02 .file > button {
-	bottom: calc(0.175rem - 1px);
-	right: calc(0.175rem - 1px);
+	bottom: calc(0.25rem - 1px);
+	right: calc(0.25rem - 1px);
 }
 
 #form02 .date:before {
-	width: calc(100% - 2.3625rem);
+	width: calc(100% - 3.375rem);
 }
 
 #form02 .date > button {
-	bottom: calc(0.175rem - 1px);
-	right: calc(0.175rem - 1px);
+	bottom: calc(0.25rem - 1px);
+	right: calc(0.25rem - 1px);
 }
 
 #form02 .actions button {
 	display: inline-block;
-	height: 1.5rem;
-	line-height: calc(1.5rem - 2px);
-	padding: 0 0.75rem;
+	height: 2.5rem;
+	line-height: calc(2.5rem - 2px);
+	padding: 0 1.25rem;
 	font-size: 0.875em;
 	font-family: 'Public Sans', sans-serif;
 	letter-spacing: 0.05rem;
-	padding-left: calc(0.05rem + 0.75rem);
+	padding-left: calc(0.05rem + 1.25rem);
 	font-weight: 400;
 	border-radius: 0rem;
 	direction: var(--site-language-direction);
@@ -656,19 +656,19 @@ form .actions button:disabled {
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iOTZweCIgaGVpZ2h0PSI5NnB4IiB2aWV3Qm94PSIwIDAgOTYgOTYiIHpvb21BbmRQYW49ImRpc2FibGUiPjxzdHlsZT5jaXJjbGUge2ZpbGw6IHRyYW5zcGFyZW50OyBzdHJva2U6ICM5OTk5OTk7IHN0cm9rZS13aWR0aDogMnB4OyB9PC9zdHlsZT48ZGVmcz48Y2xpcFBhdGggaWQ9ImNvcm5lciI+PHBvbHlnb24gcG9pbnRzPSIwLDAgNDgsMCA0OCw0OCA5Niw0OCA5Niw5NiAwLDk2IiAvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjb3JuZXIpIj48Y2lyY2xlIGN4PSI0OCIgY3k9IjQ4IiByPSIzMiIvPjwvZz48L3N2Zz4=');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 1.125rem;
+	background-size: 1.875rem;
 	content: '';
 	display: block;
-	height: 1.125rem;
+	height: 1.875rem;
 	left: 50%;
-	margin: -0.5625rem 0 0 -0.5625rem;
+	margin: -0.9375rem 0 0 -0.9375rem;
 	opacity: 0;
 	pointer-events: none;
 	position: absolute;
 	top: 50%;
 	transition: opacity 0.25s ease;
 	transition-delay: 0s;
-	width: 1.125rem;
+	width: 1.875rem;
 }
 
 #form02 .actions button.waiting {
@@ -1052,18 +1052,18 @@ h1 span[style], h2 span[style], h3 span[style], p span[style], h1 strong, h2 str
 	}
 	
 	#form02 input[type="text"], #form02 input[type="email"], #form02 input[type="tel"], #form02 input[type="number"], #form02 textarea, #form02 select, #form02 .file, #form02 .date {
-		padding-left: calc(0.05rem + 0.6125rem);
+		padding-left: calc(0.05rem + 0.875rem);
 	}
 	
 	#form02 textarea {
 		line-height: 1.5;
-		padding-top: 0.35rem;
+		padding-top: 0.6125rem;
 	}
 	
 	#form02 .actions button {
 		font-size: 0.875em;
 		letter-spacing: 0.05rem;
-		padding-left: calc(0.05rem + 0.75rem);
+		padding-left: calc(0.05rem + 1.25rem);
 	}
 	
 	#text04:not(:first-child) {
@@ -1113,10 +1113,14 @@ h1 span[style], h2 span[style], h3 span[style], p span[style], h1 strong, h2 str
 	
 	
 	
+	#container01:not(:first-child) {
+		margin-top: 0rem !important;
+	}
+	
 	#container01 > .wrapper > .inner {
 		--gutters: 2rem;
 		--padding-horizontal: 0rem;
-		--padding-vertical: 0.25rem;
+		--padding-vertical: 0rem;
 	}
 	
 	#container01.columns > .wrapper > .inner {
@@ -1218,11 +1222,6 @@ h1 span[style], h2 span[style], h3 span[style], p span[style], h1 strong, h2 str
 	#main > .inner {
 		--spacing: 0.65625rem;
 	}
-	
-	#form02 .actions button {
-		max-width: 32rem;
-		width: 100%;
-	}
 }
 
 @media (max-width: 360px) {
@@ -1247,6 +1246,6 @@ h1 span[style], h2 span[style], h3 span[style], p span[style], h1 strong, h2 str
 	#container01 > .wrapper > .inner {
 		--gutters: 1.5rem;
 		--padding-horizontal: 0rem;
-		--padding-vertical: 0.1875rem;
+		--padding-vertical: 0rem;
 	}
 }

@@ -40,7 +40,7 @@
                                             </div>
                                             <div class="field">
                                                 <div class="file" data-placeholder="upload audio instead" data-filename="" tabindex="-1">
-                                                    <input type="file" accept="video/mpeg" name="form02-upload-audio-instead" id="form02-upload-audio-instead" tabindex="-1" style="display: none;" />
+                                                    <input type="file" accept="video/mpeg" name="form02-upload-audio-instead" id="form02-upload-audio-instead" tabindex="-1" />
                                                     <button tabindex="-1" type="button" class="select"><svg><use xlink:href="{{ url_for('static', filename='icons.svg') }}#folder"></use></svg></button>
                                                 </div>
                                             </div>
@@ -77,7 +77,6 @@
                 </div>
             </div>
         </div>
-
         <!-- JavaScript -->
         <script src="{{ url_for('static', filename='main.js') }}"></script>
 		<script>// This script runs when the window has finished loading
