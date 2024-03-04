@@ -2,13 +2,26 @@
 ###### speech to text and sentiment analysis Webapp
 ###### CSAI308 - Introduction to Natural Language Processing / college project / March 2024.
 
-This web application has the ability to convert speech to text and perform sentiment analysis on the transcribed text. This is achieved through the use of Google Cloud's Speech-to-Text and Natural Language APIs.
+**Overview**
 
-The speech-to-text conversion is handled by the OpenAI client in the home function in app.py. When a user uploads an audio file, the OpenAI client transcribes the audio into text. This transcription is multilingual because Google's Speech-to-Text API supports multiple languages.
+This web application leverages advanced technologies to provide real-time speech-to-text conversion and comprehensive sentiment analysis. Core functions include:
 
-The sentiment analysis is performed by the sample_analyze_sentiment function in app.py. This function takes the transcribed text as input and uses the LanguageServiceClient from Google Cloud's Natural Language API to analyze the sentiment of the text. The sentiment analysis is also multilingual, as Google's Natural Language API supports multiple languages.
+**Technical Foundation**
 
-The results of the transcription and sentiment analysis are then displayed on the web page, as seen in the code from templates/index.html. The transcribed text is displayed under "Transcription", and the sentiment analysis results are displayed under "Sentiment Analysis". The sentiment analysis results include the overall sentiment score and magnitude of the document, as well as the sentiment score and magnitude of each sentence in the document. The language of the text is also displayed.
+* **Open AI Whisper:**  Employed for robust multilingual speech-to-text capabilities.
+* **Google Cloud Natural Language API:** Provides sophisticated sentiment analysis with multilingual compatibility.
+
+**Value Proposition**
+
+ASSR has potential applications in various fields:
+
+* **Customer Service:** Analyze call transcripts to gauge customer satisfaction and identify areas for improvement.
+* **Market Research:**  Assess sentiment towards products or brands through recorded interviews and focus groups.
+* **Accessibility:** Assist individuals with hearing impairments by providing real-time transcriptions enhanced with emotional context.
+
+**Project Status**
+
+This project, developed for a Natural Language Processing course, demonstrates the power of combining AI technologies for nuanced language understanding. Future goals include web deployment for wider accessibility.
 
 **Note:** This application can be deployed on the internet, allowing users to access it from anywhere.
 
@@ -27,12 +40,14 @@ Follow these steps to get started with ASSR:
 
     Unix-like:
     ```sh
+    mkdir env && cd env
     echo "OPENAI_API_KEY=your_api_key_here" > .env
     echo "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" >> .env
     ```
 
     PowerShell:
     ```powershell
+    mkdir env; cd env
     "OPENAI_API_KEY=your_api_key_here" | Out-File -FilePath .env -Encoding ascii
     "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" | Add-Content .env
     ```

@@ -35,25 +35,27 @@ def home():
     filename = None
     sentiment_data = None
     if request.method == 'POST':
-        if 'file' not in request.files:
-            return 'No file part in the request', 400
-        file = request.files['file']
-        if file.filename == '':
-            return 'No selected file', 400
-        if file:
-            filename = secure_filename(file.filename)
-            filepath = os.path.join(app.root_path, 'static', filename)
-            file.save(filepath)
-            try:
-                client = OpenAI(api_key=api_key)
-                transcript = client.audio.transcriptions.create(
-                    model="whisper-1", 
-                    file=open(filepath, "rb"),
-                    response_format="text"
-                )
-                sentiment_data = sample_analyze_sentiment(transcript)
-            except Exception as e:
-                print(str(e))
+        if 'text' in request.form and request.form['text']:
+            transcript = request.form['text']
+            sentiment_data = sample_analyze_sentiment(transcript)
+        elif 'file' in request.files:
+            file = request.files['file']
+            if file.filename == '':
+                return 'No selected file', 400
+            if file:
+                filename = secure_filename(file.filename)
+                filepath = os.path.join(app.root_path, 'static', filename)
+                file.save(filepath)
+                try:
+                    client = OpenAI(api_key=api_key)
+                    transcript = client.audio.transcriptions.create(
+                        model="whisper-1", 
+                        file=open(filepath, "rb"),
+                        response_format="text"
+                    )
+                    sentiment_data = sample_analyze_sentiment(transcript)
+                except Exception as e:
+                    print(str(e))
     return render_template('index.html', transcript=transcript, audio_file=filename, sentiment_data=sentiment_data)
 
 if __name__ == '__main__':
