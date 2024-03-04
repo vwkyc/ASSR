@@ -1,68 +1,113 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automatic Speech Sentiment Recognition</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
-</head>
-<body>
-    <header>
-        <h1>Upload your audio file</h1>
-    </header>
-    <main>
-        <form method="POST" action="/" enctype="multipart/form-data">
-            <input type="file" id="file" name="file">
-            <textarea id="text" name="text"></textarea>
-            <input type="submit" value="Transcribe">
-        </form>
-        <audio id="audio" controls {% if audio_file %}src="{{ url_for('static', filename=audio_file) }}"{% else %}style="display: none;"{% endif %}></audio>
-        {% if transcript %}
-            <section>
-                <h2>Transcription:</h2>
-                <p>{{ transcript }}</p>
-            </section>
-        {% endif %}
-        {% if sentiment_data %}
-            <section>
-                <h2>Sentiment Analysis:</h2>
-                <p>Document sentiment score: {{ sentiment_data.document_sentiment.score }}</p>
-                <p>Document sentiment magnitude: {{ sentiment_data.document_sentiment.magnitude }}</p>
-                {% for sentence in sentiment_data.sentences %}
-                    <p>Sentence text: {{ sentence.text.content }}</p>
-                    <p>Sentence sentiment score: {{ sentence.sentiment.score }}</p>
-                    <p>Sentence sentiment magnitude: {{ sentence.sentiment.magnitude }}</p>
-                {% endfor %}
-                <p>Language of the text: {{ sentiment_data.language_code }}</p>
-            </section>
-        {% endif %}
-    </main>
-    <script>
-        var fileInput = document.getElementById('file');
-        var audio = document.getElementById('audio');
-        var textArea = document.getElementById('text');
+    <head>
+        <!-- Meta and title information -->
+        <title>Automatic Speech Sentiment Recognition</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="color-scheme" content="light only" />
+        <meta name="description" content="This web application leverages advanced technologies to provide speech-to-text conversion and comprehensive sentiment analysis." />
+        <meta property="og:site_name" content="Automatic Speech Sentiment Recognition" />
+        <meta property="og:title" content="Automatic Speech Sentiment Recognition" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="This web application leverages advanced technologies to provide speech-to-text conversion and comprehensive sentiment analysis." />
 
-        fileInput.addEventListener('change', function() {
-            if (this.files.length > 0) {
-                audio.style.display = 'block';  // Show the audio controls
-                audio.src = URL.createObjectURL(this.files[0]);
-                audio.load();
-            } else {
-                audio.style.display = 'none';  // Hide the audio controls
-            }
-        });
+        <!-- Stylesheets and fonts -->
+        <link href="https://fonts.googleapis.com/css2?display=swap&family=Public+Sans:ital,wght@0,400;0,500;1,400;1,500" rel="stylesheet" type="text/css" />
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" />
+        <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <noscript><link rel="stylesheet" href="{{ url_for('static', filename='noscript.css') }}" /></noscript>
+    </head>
+    <body class="is-loading">
+        <div id="wrapper">
+            <div id="main">
+                <div class="inner">
+                    <!-- info -->
+                    <p id="text04">Automatic Speech Sentiment Recognition</p>
+                    <p id="text01"><a href="https://ASSR.me">ASSR.me</a> made with 💙 by <a href="https://github.com/M1419/ASSR">@M1419</a> © 2024</p>
 
-        textArea.addEventListener('keydown', function(event) {
-            if (event.shiftKey && event.key === "Enter") {
-                var cursorPos = textArea.selectionStart;
-                var textBefore = textArea.value.substring(0,  cursorPos );
-                var textAfter  = textArea.value.substring( cursorPos, textArea.value.length );
-                textArea.value = textBefore + "\n" + textAfter;
-                event.stopPropagation();
-                event.preventDefault();
-            }
-        });
-    </script>
-</body>
+                    <!-- Main content -->
+                    <div id="container01" class="container columns">
+                        <div class="wrapper">
+                            <div class="inner" data-reorder="1,0">
+                                <!-- Form for user input -->
+                                <div>
+                                    <form enctype="multipart/form-data" id="form02" method="POST" action="/" data-autofocus="1">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <textarea data-gramm_editor="false" name="form02-whats-on-your-mind" id="form02-whats-on-your-mind" placeholder="what&#039;s on your mind?" ></textarea>
+                                            </div>
+                                            <div class="field">
+                                                <div class="file" data-placeholder="upload audio instead" data-filename="" tabindex="-1">
+                                                    <input type="file" accept="video/mpeg" name="form02-upload-audio-instead" id="form02-upload-audio-instead" tabindex="-1" style="display: none;" />
+                                                    <button tabindex="-1" type="button" class="select"><svg><use xlink:href="{{ url_for('static', filename='icons.svg') }}#folder"></use></svg></button>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit">send</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Display of results -->
+                                <div>
+                                    <h1 id="text02">{% if transcript %}
+                                        <section>
+                                            <h2>Transcription: {{ transcript }}</h2>
+                                        </section>
+                                    {% endif %}
+                                    {% if sentiment_data %}
+                                        <section>
+                                            <p>Document sentiment score: <span id="document-sentiment-score">{{ sentiment_data.document_sentiment.score }}</span></p>
+                                            <p>Document sentiment magnitude: {{ sentiment_data.document_sentiment.magnitude }}</p>
+                                            {% for sentence in sentiment_data.sentences %}
+                                                <p>Sentence text: {{ sentence.text.content }}</p>
+                                                <p>Sentence sentiment score: <span class="sentence-sentiment-score">{{ sentence.sentiment.score }}</span></p>
+                                                <p>Sentence sentiment magnitude: {{ sentence.sentiment.magnitude }}</p>
+                                            {% endfor %}
+                                            <p>Language of the text: {{ sentiment_data.language_code }}</p>
+                                        </section>
+                                    {% endif %}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+		<script>// This script runs when the window has finished loading
+			window.onload = function() {
+				// Select the HTML element with the id 'document-sentiment-score'
+				let documentSentimentScore = document.querySelector('#document-sentiment-score');
+				// Select all HTML elements with the class 'sentence-sentiment-score'
+				let sentenceSentimentScores = document.querySelectorAll('.sentence-sentiment-score');
+			
+				// Define a function that applies a color to an element based on its sentiment score
+				function applyColor(element) {
+					// Parse the sentiment score from the element's text content
+					let score = parseFloat(element.textContent);
+					// If the score is greater than or equal to 0.25, color the element semi-transparent light green
+					if (score >= 0.25) {
+						element.style.color = 'rgba(0, 255, 0, 0.5)';
+					// If the score is greater than or equal to -0.25 but less than 0.25, color the element semi-transparent light yellow
+					} else if (score >= -0.25) {
+						element.style.color = 'rgba(255, 255, 128, 0.5)';
+					// If the score is less than -0.25, color the element semi-transparent light red
+					} else {
+						element.style.color = 'rgba(255, 128, 128, 0.5)';
+					}
+				}
+			
+				// Apply the color function to the document sentiment score
+				applyColor(documentSentimentScore);
+				// Apply the color function to each sentence sentiment score
+				sentenceSentimentScores.forEach(applyColor);
+			}
+			</script>
+    </body>
 </html>

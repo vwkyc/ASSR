@@ -35,11 +35,11 @@ def home():
     filename = None
     sentiment_data = None
     if request.method == 'POST':
-        if 'text' in request.form and request.form['text']:
-            transcript = request.form['text']
+        if 'form02-whats-on-your-mind' in request.form and request.form['form02-whats-on-your-mind']:
+            transcript = request.form['form02-whats-on-your-mind']
             sentiment_data = sample_analyze_sentiment(transcript)
-        elif 'file' in request.files:
-            file = request.files['file']
+        elif 'form02-upload-audio-instead' in request.files:
+            file = request.files['form02-upload-audio-instead']
             if file.filename == '':
                 return 'No selected file', 400
             if file:

@@ -1,10 +1,16 @@
+// Add an event listener to the 'click' event on the element with the class 'file .select'
 document.querySelector('.file .select').addEventListener('click', function(event) {
+    // Prevent the default action of the event
     event.preventDefault();
+    // Programmatically trigger a click event on the element with the id 'form02-upload-audio-instead'
     document.querySelector('#form02-upload-audio-instead').click();
 });
 
+// Add an event listener to the 'change' event on the element with the id 'form02-upload-audio-instead'
 document.querySelector('#form02-upload-audio-instead').addEventListener('change', function(event) {
+    // Get the name of the first file in the FileList object from the event target
     const fileName = event.target.files[0].name;
+    // Set the 'data-placeholder' attribute of the element with the class 'file' to the file name
     document.querySelector('.file').setAttribute('data-placeholder', fileName);
 });
 

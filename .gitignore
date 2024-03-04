@@ -6,10 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
-#sample file
+#sample file and dev and background
 static/ASRsample.wav
 ASRsample.wav
 ASSR.code-workspace
+bg.mp4
+bg.mp4.jpg
 
 # Distribution / packaging
 .Python
