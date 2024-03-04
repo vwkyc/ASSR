@@ -29,19 +29,6 @@ def sample_analyze_sentiment(text_content):
     )
     return response
 
-def sample_analyze_sentiment(text_content):
-    client = language_v2.LanguageServiceClient()
-    document_type_in_plain_text = language_v2.Document.Type.PLAIN_TEXT
-    document = {
-        "content": text_content,
-        "type_": document_type_in_plain_text,
-    }
-    encoding_type = language_v2.EncodingType.UTF8
-    response = client.analyze_sentiment(
-        request={"document": document, "encoding_type": encoding_type}
-    )
-    return response
-
 @app.route('/', methods=['GET', 'POST'])
 def home():
     transcript = None
