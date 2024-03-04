@@ -24,48 +24,59 @@ To get started with ASSR, follow these steps:
     ```
 
 2. Create an env directory and place a `.env` file in the root of the project then add your OpenAI API key and google application credentials inside it:
-    ```
     # bash (unix) # replace "your_api_key_here" and application_default_credentials.json file name with your own!
+    ```
     echo "OPENAI_API_KEY=your_api_key_here" > .env
     echo "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" >> .env
     ```
-    ```
     # powershell (windows) # replace "your_api_key_here" and application_default_credentials.json file name with your own!
+    ```
     "`nOPENAI_API_KEY=your_api_key_here" | Out-File -Append -Encoding utf8 .env
     "`nGOOGLE_APPLICATION_CREDENTIALS=`"./application_default_credentials.json`"" | Out-File -Append -Encoding utf8 .env
     ```
 
-3. Create an env directory and place a `.env` file in the root of the project then add your OpenAI API key and google application credentials inside it:
+    when running this command
     ```
-    # bash (unix) # replace "your_api_key_here" and application_default_credentials.json file name with your own!
-    echo "OPENAI_API_KEY=your_api_key_here" > .env
-    echo "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" >> .env
-    ```
-    ```
-    # powershell (windows) # replace "your_api_key_here" and application_default_credentials.json file name with your own!
-    "`nOPENAI_API_KEY=your_api_key_here" | Out-File -Append -Encoding utf8 .env
-    "`nGOOGLE_APPLICATION_CREDENTIALS=`"./application_default_credentials.json`"" | Out-File -Append -Encoding utf8 .env
+    cat .env
     ```
 
-4. place the application_default_credentials.json file inside ASSR/env directory
+    # you should get the following output:
+    OPENAI_API_KEY=your_api_key_here
+    GOOGLE_APPLICATION_CREDENTIALS="./application_default_credentials.json"
+
+3. place the application_default_credentials.json file inside ASSR/env directory
 
     ```
     for details see: https://cloud.google.com/docs/authentication/application-default-credentials
     ```
 
-5. Install the required dependencies. You can find the list of dependencies in the `requirements.txt` file. Run the following command:
+4. Change current directory to root of ASSR and Create and activate a virtual environment:
+
+    # bash (unix):
     ```
     cd ..
-    
+    python -m venv myenv
+    source myenv/bin/activate
+    ```
+
+    # powershell (windows):
+    ```
+    cd ..
+    python -m venv myenv
+    . .\myenv\Scripts\Activate
+    ```
+
+5. Install the required dependencies in the `requirements.txt` file:
+    ```
     pip install -r requirements.txt
     ```
 
-6. Run the ASSR application by executing the main script.
+5. Run the ASSR application by executing the main script.
     ```
     python app.py
     ```
 
-7. Run the ASSR application by executing the main script.
+6. Run the ASSR application by executing the main script.
     ```
     go to http://localhost:8080 in your browser
     ```
