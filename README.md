@@ -12,42 +12,77 @@ The results of the transcription and sentiment analysis are then displayed on th
 
 **Note:** This application can be deployed on the internet, allowing users to access it from anywhere.
 
-## Getting Started
+# Getting Started
 
-To get started with ASSR, follow these steps:
+Follow these steps to get started with ASSR:
 
-1. Clone the repository:
-    ```
+1. Clone the repository and change current directory:
+
+    ```sh
     git clone https://github.com/M1419/ASSR.git
+    cd ASSR
     ```
 
-2. Create a `.env` file in the root of the project then add your OpenAI API key and google application credentials inside it:
-    ```
-    OPENAI_API_KEY=your_api_key_here
-    GOOGLE_APPLICATION_CREDENTIALS="application_default_credentials.json"
+2. Create an `env` directory and place a `.env` file in the root of the project. Add your OpenAI API key and Google application credentials inside it:
+
+    Unix-like:
+    ```sh
+    echo "OPENAI_API_KEY=your_api_key_here" > .env
+    echo "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" >> .env
     ```
 
-3. Create and activate a virtual environment:
+    PowerShell:
+    ```powershell
+    "OPENAI_API_KEY=your_api_key_here" | Out-File -FilePath .env -Encoding ascii
+    "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" | Add-Content .env
     ```
+
+    Verify the contents of the `.env` file:
+
+    Unix-like:
+    ```sh
+    cat .env
+    ```
+
+    PowerShell:
+    ```powershell
+    Get-Content .env
+    ```
+
+3. Place the `application_default_credentials.json` file inside the `ASSR/env` directory. For details, see [Google Cloud's documentation](https://cloud.google.com/docs/authentication/application-default-credentials).
+
+4. Change current directory to root of ASSR and create and activate a virtual environment:
+
+    Unix-like:
+    ```sh
+    cd ..
     python -m venv myenv
     source myenv/bin/activate
     ```
 
-4. Install the required dependencies. You can find the list of dependencies in the `requirements.txt` file. Run the following command:
+    PowerShell:
+    ```powershell
+    cd ..
+    py -m venv myenv
+    .\myenv\Scripts\Activate
     ```
+
+5. Install the required dependencies from the `requirements.txt` file:
+
+    Unix-like:
+    ```sh
     pip install -r requirements.txt
     ```
 
-5. Run the ASSR application by executing the main script.
+    PowerShell:
+    ```powershell
+    pip install -r .\requirements.txt
     ```
+
+6. Run the ASSR application:
+
+    ```sh
     python app.py
     ```
 
-6. Run the ASSR application by executing the main script.
-    ```
-    go to http://localhost:8080 in your browser
-    ```
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+7. Open the application in your browser at `http://localhost:8080`.

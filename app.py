@@ -3,14 +3,14 @@ from flask import Flask, request, render_template, send_from_directory
 from waitress import serve
 from openai import OpenAI
 import os
-import dotenv
+from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from google.cloud import language_v2
 
 app = Flask(__name__)
 
 # Load environment variables
-dotenv.load_dotenv()
+load_dotenv('env/.env')
 # Get the API key from environment variable
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
