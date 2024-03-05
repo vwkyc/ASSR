@@ -16,8 +16,7 @@ ASSR has potential applications in various fields:
 * **Accessibility:** Assist individuals with hearing impairments by providing transcriptions enhanced with emotional context.
 
 **Project Status**
-This project, developed for a Natural Language Processing course, demonstrates the power of combining AI technologies for nuanced language understanding. Future goals include web deployment for wider accessibility.
-
+This project, developed for a Natural Language Processing course, demonstrates the power of combining AI technologies for nuanced language understanding.
 **Note:** This application can be deployed on the internet, allowing users to access it from anywhere.
 
 # Getting Started
