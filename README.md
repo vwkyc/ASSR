@@ -19,6 +19,11 @@ ASSR has potential applications in various fields:
 This project, developed for a Natural Language Processing course, demonstrates the power of combining AI technologies for nuanced language understanding.
 **Note:** This application can be deployed on the internet, allowing users to access it from anywhere.
 
+## Screenshots
+
+![Screenshot 1](https://raw.githubusercontent.com/M1419/misc/main/h/en-neg-example.png)
+![Screenshot 2](https://raw.githubusercontent.com/M1419/misc/main/h/ar-pos-example.png)
+
 # Getting Started
 
 Follow these steps to get started with ASSR:
