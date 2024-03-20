@@ -79,32 +79,6 @@ em {
 	font-style: italic;
 }
 
-code {
-	background-color: rgba(144,144,144,0.25);
-	border-radius: 0.25em;
-	font-family: 'Lucida Console', 'Courier New', monospace;
-	font-size: 0.9em;
-	font-weight: normal;
-	letter-spacing: 0;
-	margin: 0 0.25em;
-	padding: 0.25em 0.5em;
-	text-indent: 0;
-}
-
-mark {
-	background-color: rgba(144,144,144,0.25);
-}
-
-spoiler-text {
-	-webkit-text-stroke: 0;
-	background-color: rgba(32,32,32,0.75);
-	text-shadow: none;
-	text-stroke: 0;
-	color: transparent;
-	cursor: pointer;
-	transition: color 0.1s ease-in-out;
-}
-
 spoiler-text.active {
 	color: #FFFFFF;
 	cursor: text;

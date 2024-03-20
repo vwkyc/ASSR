@@ -10,7 +10,7 @@ from google.cloud import language_v2
 app = Flask(__name__)
 
 # Load environment variables
-load_dotenv('env/.env')
+load_dotenv('.env')
 # Get the API key from environment variable
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:

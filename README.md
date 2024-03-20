@@ -35,18 +35,16 @@ Follow these steps to get started with ASSR:
     cd ASSR
     ```
 
-2. Create an `env` directory and place a `.env` file in the root of the project. Add your OpenAI API key and Google application credentials inside it:
+2. Place a `.env` file in the root of the project. Add your OpenAI API key and Google application credentials inside it:
 
     Unix-like:
     ```sh
-    mkdir env && cd env
     echo "OPENAI_API_KEY=your_api_key_here" > .env
     echo "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" >> .env
     ```
 
     PowerShell:
     ```powershell
-    mkdir env; cd env
     "OPENAI_API_KEY=your_api_key_here" | Out-File -FilePath .env -Encoding ascii
     "GOOGLE_APPLICATION_CREDENTIALS=\"./application_default_credentials.json\"" | Add-Content .env
     ```
@@ -63,20 +61,18 @@ Follow these steps to get started with ASSR:
     Get-Content .env
     ```
 
-3. Place the `application_default_credentials.json` file inside the `ASSR/env` directory. For details, see [Google Cloud's documentation](https://cloud.google.com/docs/authentication/application-default-credentials).
+3. Place the `application_default_credentials.json` file in the root directory. For details, see [Google Cloud's documentation](https://cloud.google.com/docs/authentication/application-default-credentials).
 
 4. Change current directory to root of ASSR and create and activate a virtual environment:
 
     Unix-like:
     ```sh
-    cd ..
     python -m venv myenv
     source myenv/bin/activate
     ```
 
     PowerShell:
     ```powershell
-    cd ..
     py -m venv myenv
     .\myenv\Scripts\Activate
     ```

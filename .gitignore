@@ -12,6 +12,9 @@ ASRsample.wav
 ASSR.code-workspace
 bg.mp4
 bg.mp4.jpg
+app.yaml
+.gcloudignore
+pythonassr.json
 
 # Distribution / packaging
 .Python
