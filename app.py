@@ -63,6 +63,10 @@ def home():
                     sentiment_data = sample_analyze_sentiment(transcript)
                 except Exception as e:
                     print(str(e))
+                finally:
+                    # Delete the file after processing
+                    if os.path.exists(filepath):
+                        os.remove(filepath)
     return render_template('index.html', transcript=transcript, audio_file=filename, sentiment_data=sentiment_data)
 
 if __name__ == '__main__':
