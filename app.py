@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from google.cloud import language_v2
+import platform
 
 app = Flask(__name__)
 
@@ -44,7 +45,13 @@ def home():
                 return 'No selected file', 400
             if file:
                 filename = secure_filename(file.filename)
-                filepath = os.path.join(app.root_path, 'static', filename)
+                # Check the operating system
+                if platform.system() == 'Windows':
+                    # Save the file in the current directory for Windows
+                    filepath = os.path.join(os.getcwd(), filename)
+                else:
+                    # Save the file in the /tmp directory for other operating systems
+                    filepath = os.path.join('/tmp', filename)
                 file.save(filepath)
                 try:
                     client = OpenAI(api_key=api_key)
