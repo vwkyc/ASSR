@@ -31,7 +31,7 @@ Follow these steps to get started with ASSR:
 1. Clone the repository and change current directory:
 
     ```sh
-    git clone https://github.com/M1419/ASSR.git
+    git clone https://github.com/vwkyc/ASSR.git
     cd ASSR
     ```
 
