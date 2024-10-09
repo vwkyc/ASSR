@@ -5,8 +5,8 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
-from google.cloud import language_v2
 import platform
+import json
 
 app = Flask(__name__)
 
@@ -18,17 +18,51 @@ if not api_key:
     raise ValueError("No OpenAI API key found in environment variables")
 
 def sample_analyze_sentiment(text_content):
-    client = language_v2.LanguageServiceClient()
-    document_type_in_plain_text = language_v2.Document.Type.PLAIN_TEXT
-    document = {
-        "content": text_content,
-        "type_": document_type_in_plain_text,
-    }
-    encoding_type = language_v2.EncodingType.UTF8
-    response = client.analyze_sentiment(
-        request={"document": document, "encoding_type": encoding_type}
+    client = OpenAI(api_key=api_key)
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": """You are a sophisticated sentiment analysis tool. Analyze the given text and provide a detailed sentiment analysis including:
+            1. Overall sentiment score (-1.0 to 1.0, where -1 is very negative, 0 is neutral, and 1 is very positive)
+            2. Sentiment magnitude (0.0 to +inf, indicating the strength of emotion)
+            3. Dominant emotions detected (e.g., joy, anger, sadness, fear, surprise)
+            4. Key phrases or words that influenced the sentiment
+            5. A brief explanation of the sentiment analysis
+            
+            Provide your response in the following format:
+            Overall sentiment score: [score]
+            Sentiment magnitude: [magnitude]
+            Dominant emotions: [emotion1, emotion2, ...]
+            Key phrases: [phrase1, phrase2, ...]
+            Explanation: [Your explanation here]"""},
+            {"role": "user", "content": f"Analyze the sentiment of the following text:\n\n{text_content}"}
+        ],
+        max_tokens=500
     )
-    return response
+    
+    sentiment_analysis = response.choices[0].message.content.strip()
+    
+    # Parse the response
+    lines = sentiment_analysis.split('\n')
+    sentiment_data = {}
+    for line in lines:
+        if ':' in line:
+            key, value = line.split(':', 1)
+            sentiment_data[key.strip().lower().replace(' ', '_')] = value.strip()
+    
+    # Create a response that only includes non-empty fields
+    response_data = {
+        "document_sentiment": {
+            "score": float(sentiment_data.get("overall_sentiment_score", 0)),
+            "magnitude": float(sentiment_data.get("sentiment_magnitude", 0))
+        },
+        "dominant_emotions": [e.strip() for e in sentiment_data.get("dominant_emotions", "").strip("[]").split(',') if e.strip()],
+        "key_phrases": [p.strip() for p in sentiment_data.get("key_phrases", "").strip("[]").split(',') if p.strip()],
+        "explanation": sentiment_data.get("explanation", ""),
+        "language_code": "en"
+    }
+    
+    return response_data
 
 @app.route('/', methods=['GET', 'POST'])
 def home():

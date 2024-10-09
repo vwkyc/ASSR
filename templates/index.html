@@ -53,7 +53,8 @@
 
                                 <!-- Display of results -->
                                 <div>
-                                    <h1 id="text02">{% if transcript %}
+                                    <h1 id="text02">
+                                    {% if transcript %}
                                         <section>
                                             <h2>Transcription: {{ transcript }}</h2>
                                         </section>
@@ -62,14 +63,17 @@
                                         <section>
                                             <p>Document sentiment score: <span id="document-sentiment-score">{{ sentiment_data.document_sentiment.score }}</span></p>
                                             <p>Document sentiment magnitude: {{ sentiment_data.document_sentiment.magnitude }}</p>
-                                            {% for sentence in sentiment_data.sentences %}
-                                                <p>Sentence text: {{ sentence.text.content }}</p>
-                                                <p>Sentence sentiment score: <span class="sentence-sentiment-score">{{ sentence.sentiment.score }}</span></p>
-                                                <p>Sentence sentiment magnitude: {{ sentence.sentiment.magnitude }}</p>
-                                            {% endfor %}
-                                            <p>Language of the text: {{ sentiment_data.language_code }}</p>
+                                            <p>Dominant emotions: {{ sentiment_data.dominant_emotions|join(', ') }}</p>
+                                            <p>Key phrases: {{ sentiment_data.key_phrases|join(', ') }}</p>
+                                            {% if sentiment_data.explanation %}
+                                                <p>Explanation: {{ sentiment_data.explanation }}</p>
+                                            {% endif %}
+                                            {% if sentiment_data.language_code %}
+                                                <p>Language of the text: {{ sentiment_data.language_code }}</p>
+                                            {% endif %}
                                         </section>
-                                    {% endif %}</h1>
+                                    {% endif %}
+                                    </h1>
                                 </div>
                             </div>
                         </div>
@@ -79,34 +83,27 @@
         </div>
         <!-- JavaScript -->
         <script src="{{ url_for('static', filename='main.js') }}"></script>
-		<script>// This script runs when the window has finished loading
-			window.onload = function() {
-				// Select the HTML element with the id 'document-sentiment-score'
-				let documentSentimentScore = document.querySelector('#document-sentiment-score');
-				// Select all HTML elements with the class 'sentence-sentiment-score'
-				let sentenceSentimentScores = document.querySelectorAll('.sentence-sentiment-score');
-			
-				// Define a function that applies a color to an element based on its sentiment score
-				function applyColor(element) {
-					// Parse the sentiment score from the element's text content
-					let score = parseFloat(element.textContent);
-					// If the score is greater than or equal to 0.25, color the element semi-transparent light green
-					if (score >= 0.25) {
-						element.style.color = 'rgba(0, 255, 0, 0.5)';
-					// If the score is greater than or equal to -0.25 but less than 0.25, color the element semi-transparent light yellow
-					} else if (score >= -0.25) {
-						element.style.color = 'rgba(255, 255, 128, 0.5)';
-					// If the score is less than -0.25, color the element semi-transparent light red
-					} else {
-						element.style.color = 'rgba(255, 128, 128, 0.5)';
-					}
-				}
-			
-				// Apply the color function to the document sentiment score
-				applyColor(documentSentimentScore);
-				// Apply the color function to each sentence sentiment score
-				sentenceSentimentScores.forEach(applyColor);
-			}
-			</script>
+        <script>
+        window.onload = function() {
+            let documentSentimentScore = document.querySelector('#document-sentiment-score');
+            let sentenceSentimentScores = document.querySelectorAll('.sentence-sentiment-score');
+        
+            function applyColor(element) {
+                let score = parseFloat(element.textContent);
+                if (score >= 0.25) {
+                    element.style.color = 'rgba(0, 255, 0, 0.5)';
+                } else if (score >= -0.25) {
+                    element.style.color = 'rgba(255, 255, 128, 0.5)';
+                } else {
+                    element.style.color = 'rgba(255, 128, 128, 0.5)';
+                }
+            }
+        
+            if (documentSentimentScore) {
+                applyColor(documentSentimentScore);
+            }
+            sentenceSentimentScores.forEach(applyColor);
+        }
+        </script>
     </body>
 </html>
