@@ -104,5 +104,5 @@ def home():
     return render_template('index.html', transcript=transcript, audio_file=filename, sentiment_data=sentiment_data)
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     serve(app, host="0.0.0.0", port=8080)
